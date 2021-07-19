@@ -23,7 +23,4 @@
 
   /* margin-top: 60px; */
 }
-html::-webkit-scrollbar {
-  display: none;
-}
 </style>

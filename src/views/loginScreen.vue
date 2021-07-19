@@ -4,11 +4,14 @@
     <h2>Login Screen</h2>
 
     <div class="details">
-      <input type="text" placeholder="Email" /><br />
-      <input type="password" placeholder="Password" /><br />
-      <router-link to="/Home"
-        ><button id="login">Login</button><br
-      /></router-link>
+      <input type="text" placeholder="Email" v-model="loginForm.email" /><br />
+      <input
+        type="password"
+        placeholder="Password"
+        v-model="loginForm.password"
+      /><br />
+
+      <button id="login" v-on:click="getLogin()">Login</button><br />
 
       <a href="#">Forget Your Password</a><br />
     </div>
@@ -21,6 +24,23 @@ export default {
   props: {
     msg: String,
   },
+  data() {
+    return {
+      loginForm: {
+        email: null,
+        password: null,
+      },
+    };
+  },
+  methods: {
+    getLogin() {
+      console.log(
+        "Data Entered",
+        this.loginForm.email,
+        this.loginForm.password
+      );
+    },
+  },
 };
 </script>
 
@@ -28,6 +48,7 @@ export default {
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -42,7 +63,7 @@ h1 {
   display: inline-block;
   border: #e2baff solid 1px;
   background-color: #f7ebff;
-  width: 500px;
+  width: 40%;
   height: 300px;
   margin-left: 31%;
   margin-right: auto;

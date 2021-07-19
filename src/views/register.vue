@@ -3,10 +3,18 @@
     <h1>Register Here</h1>
 
     <div class="log">
-      <input type="text" placeholder="Email" /><br />
-      <input type="password" placeholder="Password" /><br />
-      <input type="password" placeholder="Confirm Password" /><br />
-      <router-link to="/Home"><button>Register</button></router-link>
+      <input v-model="loginId.email" type="text" placeholder="Email" /><br />
+      <input
+        v-model="loginId.password"
+        type="password"
+        placeholder="Password"
+      /><br />
+      <input
+        v-model="loginId.confirmPassword"
+        type="password"
+        placeholder="Confirm Password"
+      /><br />
+      <button @click="getData()">Register</button>
     </div>
   </div>
 </template>
@@ -17,6 +25,25 @@ export default {
   props: {
     msg: String,
   },
+  data() {
+    return {
+      loginId: {
+        email: null,
+        password: null,
+        confirmPassword: null,
+      },
+    };
+  },
+  methods: {
+    getData() {
+      console.log(
+        "Entered data is",
+        this.loginId.email,
+        this.loginId.password,
+        this.loginId.confirmPassword
+      );
+    },
+  },
 };
 </script>
 
@@ -24,6 +51,9 @@ export default {
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  font-family: "Fuggles", cursive;
+  font-size: 40px;
 }
 h1 {
   text-align: center;
